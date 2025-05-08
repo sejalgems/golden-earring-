@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MindAR Custom Earring Try-On (Both Ears)</title>
+  <!-- Load A-Frame -->
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <!-- Load MindAR face tracking -->
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+  <a-scene mindar-face embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;">
+    
+    <!-- Preload your custom 3D earring model -->
+    <a-assets>
+      <a-asset-item id="earringModel" src="https://cdn.glitch.global/04d4d3af-c3e8-47ef-ae7c-e407899dddf8/left_earring.compressed.glb?v=1746686794105"></a-asset-item>
+    </a-assets>
+    
+    <!-- Camera controlled by MindAR -->
+    <a-camera active="false" position="0 0 0"></a-camera>
+    
+    <!-- Left ear earring -->
+    <a-entity mindar-face-target="anchorIndex: 127">
+      <a-gltf-model 
+        src="#earringModel" 
+        rotation="-10 0 0" 
+        position="0 -0.3 -0.3" 
+        scale="0.05 0.05 0.05"
+        visible="true">
+      </a-gltf-model>
+    </a-entity>
+    
+    <!-- Right ear earring -->
+    <a-entity mindar-face-target="anchorIndex: 356">
+      <a-gltf-model 
+        src="#earringModel" 
+        rotation="10 0 0" 
+        position="0 -0.3 -0.3" 
+        scale="0.05 0.05 0.05"
+        visible="true">
+      </a-gltf-model>
+    </a-entity>
+    
+  </a-scene>
+</body>
+</html>
